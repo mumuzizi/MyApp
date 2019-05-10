@@ -1,17 +1,24 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <navigation :navTitle="propsTitle"></navigation>
+    <router-view @routerEmit='changeRouter'/>
   </div>
 </template>
-
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import navigation from '@/components/public/Navigation.vue'
 export default {
-  name: 'app',
-  components: {
-    HelloWorld
+  data(){
+    return{
+      propsTitle:"music"
+    }
+  },
+  components:{
+    navigation
+  },
+  methods:{
+    changeRouter(title){
+      this.propsTitle=title
+    }
   }
 }
 </script>
@@ -21,8 +28,8 @@ export default {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+}
+.container{
+  padding:1rem 0;
 }
 </style>
